@@ -4,11 +4,13 @@ import dado
 class Juego:
     __jugador1 = ""
     __jugador2 = ""
+    __jugador3 = ""
     __lanzamientos = 0
 
-    def __init__(self, jugador1, jugador2, caras1, caras2, caras3, lanzamientos, visualizar_proceso):
+    def __init__(self, jugador1, jugador2, jugador3, caras1, caras2, caras3, lanzamientos, visualizar_proceso):
         self.set_jugador1(jugador1)
         self.set_jugador2(jugador2)
+        self.set_jugador3(jugador3)
         self.set_lanzamientos(lanzamientos)
         self.dado1 = dado.Dado(caras1)
         self.dado2 = dado.Dado(caras2)
@@ -17,6 +19,7 @@ class Juego:
         self.__intermedios = (visualizar_proceso in ("S", "s"))
         self.resultado_jugador1 = 0
         self.resultado_jugador2 = 0
+        self.resultado_jugador3 = 0
 
     def set_jugador1(self, fjugador1):
         if len(fjugador1) > 20:
@@ -29,6 +32,12 @@ class Juego:
             raise Exception("La longitud del nombre del jugador 2 no puede ser mayor de 20")
         else:
             self.__jugador2 = fjugador2
+
+    def set_jugador3(self, fjugador3):
+        if len(fjugador3) > 20:
+            raise Exception("La longitud del nombre del jugador 2 no puede ser mayor de 20")
+        else:
+            self.__jugador3 = fjugador3
 
     def set_lanzamientos(self, flanzamientos):
         if not 2 < flanzamientos < 1000:
@@ -56,6 +65,16 @@ class Juego:
 
             if self.__intermedios:
                 print(f"{self.__jugador2}: {resul_dado1} {resul_dado2} {resul_dado3} "
+                      f"({(resul_dado1 + resul_dado2 + resul_dado3)})")
+
+            # jugador 3
+            resul_dado1 = self.dado1.lanzar()
+            resul_dado2 = self.dado2.lanzar()
+            resul_dado3 = self.dado3.lanzar()
+            self.resultado_jugador3 += (resul_dado1 + resul_dado2 + resul_dado3)
+
+            if self.__intermedios:
+                print(f"{self.__jugador3}: {resul_dado1} {resul_dado2} {resul_dado3} "
                       f"({(resul_dado1 + resul_dado2 + resul_dado3)})")
 
     def mostrar_resultado(self):
