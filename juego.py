@@ -6,13 +6,14 @@ class Juego:
     __jugador2 = ""
     __lanzamientos = 0
 
-    def __init__(self, jugador1, jugador2, caras1, caras2, caras3, lanzamientos, visualizar_proceso):
+    def __init__(self, jugador1, jugador2, caras1, caras2, caras3, caras4, lanzamientos, visualizar_proceso):
         self.set_jugador1(jugador1)
         self.set_jugador2(jugador2)
         self.set_lanzamientos(lanzamientos)
         self.dado1 = dado.Dado(caras1)
         self.dado2 = dado.Dado(caras2)
         self.dado3 = dado.Dado(caras3)
+        self.dado4 = dado.Dado(caras4)
         # Me guardo en un atributo booelano si necesito o no ver los datos intermedios
         self.__intermedios = (visualizar_proceso in ("S", "s"))
         self.resultado_jugador1 = 0
@@ -42,7 +43,8 @@ class Juego:
             resul_dado1 = self.dado1.lanzar()
             resul_dado2 = self.dado2.lanzar()
             resul_dado3 = self.dado3.lanzar()
-            self.resultado_jugador1 += (resul_dado1 + resul_dado2 + resul_dado3)
+            resul_dado4 = self.dado4.lanzar()
+            self.resultado_jugador1 += (resul_dado1 + resul_dado2 + resul_dado3 + resul_dado4)
 
             if self.__intermedios:
                 print(f"{self.__jugador1}: {resul_dado1} {resul_dado2} {resul_dado3} "
@@ -52,18 +54,19 @@ class Juego:
             resul_dado1 = self.dado1.lanzar()
             resul_dado2 = self.dado2.lanzar()
             resul_dado3 = self.dado3.lanzar()
-            self.resultado_jugador2 += (resul_dado1 + resul_dado2 + resul_dado3)
+            resul_dado4 = self.dado4.lanzar()
+            self.resultado_jugador2 += (resul_dado1 + resul_dado2 + resul_dado3 + resul_dado4)
 
             if self.__intermedios:
-                print(f"{self.__jugador2}: {resul_dado1} {resul_dado2} {resul_dado3} "
-                      f"({(resul_dado1 + resul_dado2 + resul_dado3)})")
+                print(f"{self.__jugador2}: {resul_dado1} {resul_dado2} {resul_dado3} {resul_dado4} "
+                      f"({(resul_dado1 + resul_dado2 + resul_dado3 + resul_dado4)})")
 
     def mostrar_resultado(self):
         print("Resultados:")
         print(f"Jugador 1: {self.__jugador1}")
         print(f"Jugador 2: {self.__jugador2}")
         print(f"Numero de lanzamientos: {self.__lanzamientos}")
-        print(f"Dados: {self.dado1.getCaras()},{self.dado2.getCaras()} y {self.dado3.getCaras()} ")
+        print(f"Dados: {self.dado1.getCaras()},{self.dado2.getCaras()},{self.dado3.getCaras()}y{self.dado4.getCaras()}")
         print(f"Puntos jugador 1: {self.resultado_jugador1}")
         print(f"Puntos jugador 2: {self.resultado_jugador2}")
         if self.resultado_jugador1 > self.resultado_jugador2:
