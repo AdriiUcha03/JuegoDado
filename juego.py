@@ -13,13 +13,13 @@ class Juego:
         self.set_jugador3(jugador3)
         self.set_lanzamientos(lanzamientos)
         if caras1 == caras2 or caras1 == caras3 or caras1 == caras4:
-            raise Exception("Las caras de los dados no pueden ser iguales")
+            raise Exception("Les cares dels daus no poden ser iguals")
         elif caras2 == caras1 or caras2 == caras3 or caras2 == caras4:
-            raise Exception("Las caras de los dados no pueden ser iguales")
+            raise Exception("Les cares dels daus no poden ser iguals")
         elif caras3 == caras2 or caras3 == caras1 or caras3 == caras4:
-            raise Exception("Las caras de los dados no pueden ser iguales")
+            raise Exception("Les cares dels daus no poden ser iguals")
         elif caras4 == caras2 or caras4 == caras3 or caras4 == caras1:
-            raise Exception("Las caras de los dados no pueden ser iguales")
+            raise Exception("Les cares dels daus no poden ser iguals")
         self.dado1 = dado.Dado(caras1)
         self.dado2 = dado.Dado(caras2)
         self.dado3 = dado.Dado(caras3)
@@ -32,25 +32,25 @@ class Juego:
 
     def set_jugador1(self, fjugador1):
         if len(fjugador1) > 20:
-            raise Exception("La longitud del nombre del jugador 1 no puede ser mayor de 20")
+            raise Exception("La longitud del nom del jugador 1 no pot ser major de 20")
         else:
             self.__jugador1 = fjugador1
 
     def set_jugador2(self, fjugador2):
         if len(fjugador2) > 20:
-            raise Exception("La longitud del nombre del jugador 2 no puede ser mayor de 20")
+            raise Exception("La longitud del nom del jugador 2 no pot ser major de 20")
         else:
             self.__jugador2 = fjugador2
 
     def set_jugador3(self, fjugador3):
         if len(fjugador3) > 20:
-            raise Exception("La longitud del nombre del jugador 2 no puede ser mayor de 20")
+            raise Exception("La longitud del nom del jugador 3 no pot ser major de 20")
         else:
             self.__jugador3 = fjugador3
 
     def set_lanzamientos(self, flanzamientos):
         if not 2 < flanzamientos < 1000:
-            raise Exception("El número de lanzamientos debe de estar entre 2 y 100")
+            raise Exception("El nombre de llançaments ha d'estar entre 2 i 1000")
         else:
             self.__lanzamientos = flanzamientos
 
@@ -90,20 +90,20 @@ class Juego:
                       f"({(resul_dado1 + resul_dado2 + resul_dado3 + resul_dado4)})")
 
     def mostrar_resultado(self):
-        print("Resultados:")
+        print("Resultats:")
         print(f"Jugador 1: {self.__jugador1}")
         print(f"Jugador 2: {self.__jugador2}")
         print(f"Jugador 3: {self.__jugador3}")
-        print(f"Numero de lanzamientos: {self.__lanzamientos}")
-        print(f"Dados: {self.dado1.getCaras()},{self.dado2.getCaras()},{self.dado3.getCaras()}y{self.dado4.getCaras()}")
-        print(f"Puntos jugador 1: {self.resultado_jugador1}")
-        print(f"Puntos jugador 2: {self.resultado_jugador2}")
-        print(f"Puntos jugador 3: {self.resultado_jugador3}")
+        print(f"Numere de llançaments: {self.__lanzamientos}")
+        print(f"Daus: {self.dado1.getCaras()},{self.dado2.getCaras()},{self.dado3.getCaras()}y{self.dado4.getCaras()}")
+        print(f"Punts jugador 1: {self.resultado_jugador1}")
+        print(f"Punts jugador 2: {self.resultado_jugador2}")
+        print(f"Punts jugador 3: {self.resultado_jugador3}")
         if self.resultado_jugador1 > self.resultado_jugador2 and self.resultado_jugador1 > self.resultado_jugador3:
-            print(f"El GANADOR es {self.__jugador1} con {self.resultado_jugador1} puntos")
+            print(f"El GUANYADOR és {self.__jugador1} con {self.resultado_jugador1} punts")
         elif self.resultado_jugador2 > self.resultado_jugador1 and self.resultado_jugador2 > self.resultado_jugador3:
-            print(f"El GANADOR es {self.__jugador1} con {self.resultado_jugador1} puntos")
+            print(f"El GUANYADOR és {self.__jugador1} con {self.resultado_jugador1} punts")
         elif self.resultado_jugador3 > self.resultado_jugador1 and self.resultado_jugador3 > self.resultado_jugador2:
-            print(f"El GANADOR es {self.__jugador1} con {self.resultado_jugador1} puntos")
+            print(f"El GUANYADOR és {self.__jugador1} con {self.resultado_jugador1} punts")
         elif self.resultado_jugador1 == self.resultado_jugador2 and self.resultado_jugador1 == self.resultado_jugador3:
-            print("Ha habido un EMPATE")
+            print("Hi ha hagut un EMPAT")
