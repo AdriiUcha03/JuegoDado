@@ -10,6 +10,14 @@ class Juego:
         self.set_jugador1(jugador1)
         self.set_jugador2(jugador2)
         self.set_lanzamientos(lanzamientos)
+        if caras1 == caras2 or caras1 == caras3 or caras1 == caras4:
+            raise Exception("Las caras de los dados no pueden ser iguales")
+        elif caras2 == caras1 or caras2 == caras3 or caras2 == caras4:
+            raise Exception("Las caras de los dados no pueden ser iguales")
+        elif caras3 == caras2 or caras3 == caras1 or caras3 == caras4:
+            raise Exception("Las caras de los dados no pueden ser iguales")
+        elif caras4 == caras2 or caras4 == caras3 or caras4 == caras1:
+            raise Exception("Las caras de los dados no pueden ser iguales")
         self.dado1 = dado.Dado(caras1)
         self.dado2 = dado.Dado(caras2)
         self.dado3 = dado.Dado(caras3)
